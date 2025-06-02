@@ -1,12 +1,10 @@
-
 "use client";
 
 import { ReactNode, useEffect, useState } from "react";
 import { StreamVideoClient, StreamVideo } from "@stream-io/video-react-sdk";
 import { useUser } from "@clerk/nextjs";
-import { streamTokenProvider } from "@/actions/stream.actions";
 import LoaderUI from "../LoaderUI";
-
+import { streamTokenProvider } from "@/actions/stream.actions";
 
 const StreamVideoProvider = ({ children }: { children: ReactNode }) => {
   const [streamVideoClient, setStreamVideoClient] = useState<StreamVideoClient>();
@@ -28,7 +26,7 @@ const StreamVideoProvider = ({ children }: { children: ReactNode }) => {
     setStreamVideoClient(client);
   }, [user, isLoaded]);
 
-  if (!streamVideoClient) return <LoaderUI/>;
+  if (!streamVideoClient) return <LoaderUI />;
 
   return <StreamVideo client={streamVideoClient}>{children}</StreamVideo>;
 };
